@@ -22,7 +22,15 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <h2 class="section-heading"> <%= postID.title %> </h2>
           <p> <%= postID.message %> </p>
-          <p class="post-meta"> <%= postID.dateCreated %> </p>         
+          <p class="post-meta"> <%= postID.dateCreated %> </p> 
+          <div class="text-center">
+            <a href="/posts/update/<%= postID._id %>" type="button" class="btn btn-outline-primary rounded"> 
+              Update 
+            </a>
+            <a href="/posts/<%= postID._id %>?_method=DELETE" type="button" class="btn btn-outline-danger rounded" onclick="return confirm('Are you sure?')"> 
+              Delete 
+            </a>
+          </div>        
         </div>
       </div>
     </div>
