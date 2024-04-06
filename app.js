@@ -9,10 +9,14 @@ const postController = require("./controllers/postController");
 const app = express();
 
 //connect db
-mongoose.connect('mongodb://localhost/cleanblog-test-db', {
+mongoose.connect('mongodb+srv://omercanhocaoglu:sXDWzA5rI5LjJRre@cluster0.nwvjyus.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
+}).then( () => {
+    console.log('DB connected!')
+}).catch( (err) => {
+    console.log(err);
 });
 
 //Template engine
@@ -45,7 +49,7 @@ app.post( "/posts", postController.getPost);
 app.put("/posts/:id", postController.getUpdatePost);
 app.delete("/posts/:id", postController.getDeletePost);
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Sunucu port:${port}'de çalışıyor.`);
 });
